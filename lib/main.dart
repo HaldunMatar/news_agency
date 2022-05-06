@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<NewsProvider>().fetchNews();
+    //context.read<NewsProvider>().fetchNews();
 
     return NewsList();
   }

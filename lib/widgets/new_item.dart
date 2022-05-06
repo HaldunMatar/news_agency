@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 import 'package:news_agency/models/new.dart';
 
@@ -17,24 +18,31 @@ class NewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(newob.name),
-      subtitle: Text(
-        newob.source,
-        style: TextStyle(color: Colors.red),
-      ),
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(newob.image),
-      ),
-      trailing: Container(
-        child: IconButton(
-          icon: Icon(Icons.browse_gallery),
+    return GestureDetector(
+      child: ListTile(
+        title: Text(newob.name),
+        subtitle: Text(
+          newob.source,
+          style: TextStyle(color: Colors.red),
+        ),
+        leading: CircleAvatar(
+          backgroundImage: NetworkImage(newob.image),
+        ),
+        trailing: IconButton(
+          icon: const Icon(Icons.access_time_filled_sharp),
           onPressed: () {
-            MaterialPageRoute(builder: (context) => NewDetails(newob));
+            print(newob.source);
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => NewDetails(newob)));
           },
           color: Theme.of(context).primaryColor,
         ),
       ),
+      onTap: () {
+        print(newob.source);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => NewDetails(newob)));
+      },
     );
   }
 }
