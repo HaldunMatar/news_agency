@@ -24,13 +24,13 @@ class NewsList extends StatelessWidget {
                 : RefreshIndicator(
                     onRefresh: () => _refreshNews(context),
                     child: Consumer<NewsProvider>(
-                      builder: (ctx, productsData, _) => Padding(
+                      builder: (ctx, newsData, _) => Padding(
                         padding: EdgeInsets.all(8),
                         child: ListView.builder(
-                          itemCount: productsData.items.length,
+                          itemCount: newsData.items.length,
                           itemBuilder: (_, i) => Column(
                             children: [
-                              NewItem(null, productsData.items[i]),
+                              NewItem(null, newsData.items[i]),
                               Divider(),
                             ],
                           ),
